@@ -1,3 +1,4 @@
+<div align="center"><img src="icon.png" width="50%" height="50%"></div>
 <h2 align="center"<b>EasyForms</b></h2>
 <div align="center">Description</div>
 <div align="center">
@@ -11,7 +12,7 @@
 ### Usage
 
 #### CustomForm
-Import `CustomForm`, `Label`, `Input`, `Dropdown`, `Slider`, `StepSlider`, `Toggle` classes.
+> Import `CustomForm`, `Label`, `Input`, `Dropdown`, `Slider`, `StepSlider`, `Toggle` classes.
 ```php
 use mayuri\form\type\CustomForm;
 use mayuri\form\elements\components\Label;
@@ -21,10 +22,11 @@ use mayuri\form\elements\components\Slider;
 use mayuri\form\elements\components\StepSlider;
 use mayuri\form\elements\components\Toggle;
 ```
-- Create CustomForm
+
+> Create CustomForm
 ```php
 // Title: Argument String, Elements: Argument Array, onSubmit: Argument Closure, onClose: Argument ?Closure
-$form = new CustomForm("", [], function(Player $player, CustomFormResponse $response) : void{})); 
+$form = new CustomForm("", [], function(Player $player, CustomFormResponse $response) : void{}, function(Player $player): void{})); 
 ```
 Example CustomForm:
 ```php
@@ -35,89 +37,118 @@ $form = new CustomForm("Enter data", [
       new Slider("Select count", 1.0, 100.0, 1.0, 50.0),
       new StepSlider("Select product Item", ["Netherite Ingot", "Diamond", "Iron Ingot"], 0),
       new Toggle("I'm toggle on", true)
-], function(Player $player, CustomFormResponse $response) : void{}));
-// OR
-$label = new Label("I'm label");
-$input = new Input("Enter your name", "Enter name", "Bob");
-$dropdown = new Dropdown("Select product Fooed", ["Beer", "Cheese", "Cake"], 0);
-$slider = new Slider("Select count", 1.0, 100.0, 1.0, 50.0);
-$stepslider = new StepSlider("Select product Item", ["Netherite Ingot", "Diamond", "Iron Ingot"], 0); 
-$toggle = new Toggle("I'm toggle on", true);
-$form = new CustomForm("Enter data", [
-      $label,
-      $input,
-      $dropdown,
-      $slider,
-      $stepslider,
-      $toggle
-], function(Player $player, CustomFormResponse $response) : void{}));
+], function(Player $player, CustomFormResponse $response) : void{}, function(Player $player): void{}));
 ```
-<hr>
+<br>
 
-- Added Label in CustomForm
+
+> Add Label to CustomForm
 ```php
 // Text: Argument String
-$label = new Label("");
+new Label("");
 ```
 Example Label:
 ```php
-$label = new Label("I'm label");
+new Label("I'm label");
 ```
-<hr>
+<br>
 
-- Added Input in CustomForm
+
+> Add Input to CustomForm
 ```php
 // Text: Argument String, Placeholder: Argument String, Default: Argument String
-$input = new Input("", "", "");
+new Input("", "", "");
 ```
 Example Input:
 ```php
-$input = new Input("Enter your name", "Enter name", "Bob");
+new Input("Enter your name", "Enter name", "Bob");
 ```
-<hr>
+<br>
 
-- Added Dropdown in CustomForm
+> Add Dropdown to CustomForm
 ```php
 // Text: Argument String, Options: Argument Array, Default: Argument Integer
-$dropdown = new Dropdown("", [], 0);
+new Dropdown("", [], 0);
 ```
 Example Dropdown:
 ```php
-$dropdown = new Dropdown("Select product Fooed", ["Beer", "Cheese", "Cake"], 0);
+new Dropdown("Select product Fooed", ["Beer", "Cheese", "Cake"], 0);
 ```
-<hr>
+<br>
 
-- Added Slider in CustomForm
+> Add Slider to CustomForm
 ```php
 // Text: Argument String, Minimum: Argument Float, Maximum: Argument Float, Step: Argument ?Float, Default: Argument ?Float
-$slider = new Slider("", 1.0, 4.0, 1.0, 1.0);
+new Slider("", 1.0, 4.0, 1.0, 1.0);
 ```
 Example Slider:
 ```php
-$slider = new Slider("Select count", 1.0, 100.0, 1.0, 50.0);
+new Slider("Select count", 1.0, 100.0, 1.0, 50.0);
 ```
-<hr>
+<br>
 
-- Added StepSlider in CustomForm
+> Add StepSlider to CustomForm
 ```php
 // Text: Argument String, Options: Argument Array, Default: Argument Integer
-$stepslider = new StepSlider("", [], 0); 
+new StepSlider("", [], 0); 
 ```
 Example StepSlider:
 ```php
-$stepslider = new StepSlider("Select product Item", ["Netherite Ingot", "Diamond", "Iron Ingot"], 0); 
+new StepSlider("Select product Item", ["Netherite Ingot", "Diamond", "Iron Ingot"], 0); 
 ```
-<hr>
+<br>
 
-- Added Toggle in CustomForm
+> Add Toggle to CustomForm
 ```php
 // Text: Argument String, Default: Argument Boolean
-$toggle = new Toggle("", true);
+new Toggle("", true);
 ```
 Example Toggle:
 ```php
-$toggle = new Toggle("I'm toggle on", true);
+new Toggle("I'm toggle on", true);
 // OR
-$toggle = new Toggle("I'm toggle off", false);
+new Toggle("I'm toggle off", false);
 ```
-<hr>
+<hr><br>
+
+
+#### SimpleForm
+> Import `SimpleForm`, `Button`, `Image` classes.
+```php
+use mayuri\form\type\Simple;
+use mayuri\form\elements\components\Button;
+use mayuri\form\elements\components\Image;
+```
+> Create SimpleForm
+```php
+// Title: Argument String, Text: Argument String, Elements: Argument: Array, onSubmit: Argument Closure, onClose: Argument ?Closure
+$form = new CustomForm("", "", [], function(Player $player, Button $seleted) : void{}, function(Player $player): void{})); 
+```
+Example SimpleForm:
+```php
+$form = new SimpleForm("Selet Items", "Choose Item", [
+      new Button("Coal"),
+      new Button("Melon", new Image("https://gamepedia.cursecdn.com/minecraft_gamepedia/1/19/Melon.png", Image::TYPE_URL)); // Use Type Url
+      new Button("Diamond", new Image("textures/item/diamond.png", Image::TYPE_PATH)); // Use Type Path
+], function(Player $player, Button $seleted) : void{}, function(Player $player): void{});
+```
+<br>
+
+> Add Button to SimpleForm
+```php
+// Text: Argument String, Image: Argument ?Image
+new Button("", new Image("", Image::TYPE_URL)); 
+```
+<br>
+
+Example Button:
+```php
+new Button("Diamond Sword");
+// OR, would like to add a Image
+// Type Url (If you enter a Type Url, you must include an image link)
+new Button("Melon", new Image("https://gamepedia.cursecdn.com/minecraft_gamepedia/1/19/Melon.png", Image::TYPE_URL));
+// Type Path (If you enter a Type Path, you must include an image path)
+new Button("Diamond", new Image("textures/item/diamond.png", Image::TYPE_PATH));
+```
+There are 2 types of images: `Image::TYPE_URL` and `Image::TYPE_PATH`
+<br>
