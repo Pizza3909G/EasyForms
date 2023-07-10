@@ -1,0 +1,6 @@
+name: EasyForms
+api: 5.0.0
+version: 1.5.0
+main: mayuri\form\Loader
+description: EasyForms for PocketMine-MP
+author: Mayuri
