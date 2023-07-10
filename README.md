@@ -3,7 +3,7 @@
 <div align="center">Description</div>
 <div align="center">
 
-  A pocketmine plug-in that supports plugins to make a [FormUI](https://github.com/Frago9876543210/forms)
+  A pocketmine plug-in that supports plugins to make a [FormUI](https://wiki.bedrock.dev/scripting/gametest-form.html)
 
 </div>
 
