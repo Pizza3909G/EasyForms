@@ -65,8 +65,12 @@ class SimpleForm extends Form {
 		parent::__construct($title);
 		$this->text = $text;
 		$this->append(...$buttons);
-		$this->setOnSubmit($onSubmit);
-		$this->setOnClose($onClose);
+		if($onSubmit !== null){
+			$this->setOnSubmit($onSubmit);
+		}
+		if($onClose !== null){
+			$this->setOnClose($onClose);
+		}
 	}
 
 	public function setText(string $text): self {
